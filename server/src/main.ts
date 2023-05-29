@@ -19,6 +19,9 @@ async function bootstrap() {
     }),
   );
 
+  // app.useStaticAssets(join(__dirname, '..', 'public')); // <-- for shared image/static assets
+  // app.setBaseViewsDir(join(__dirname, '..', 'views')); // <-- for `index.html` / views (components?)
+
   const options = new DocumentBuilder()
     .setTitle('Secret-Stories')
     .setDescription('Competitive Creative Writing Multiplayer Web Game')
