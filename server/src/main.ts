@@ -24,7 +24,6 @@ async function bootstrap() {
 
   app.useStaticAssets(join(__dirname, 'views')); // <-- for shared image/static assets
   app.setBaseViewsDir(join(__dirname, 'views')); // <-- for `index.html` / views (components?)
-  // app.useStaticAssets(join(__dirname, '..', '..', 'client', 'public')); // <-- for shared image/static assets
   app.setViewEngine('hbs');
 
   const options = new DocumentBuilder()
