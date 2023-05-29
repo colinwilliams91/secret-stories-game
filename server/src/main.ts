@@ -1,12 +1,15 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { join } from 'path';
 
+const PORT = 3000; /* <-- move to .env */
+
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -19,8 +22,10 @@ async function bootstrap() {
     }),
   );
 
-  // app.useStaticAssets(join(__dirname, '..', 'public')); // <-- for shared image/static assets
-  // app.setBaseViewsDir(join(__dirname, '..', 'views')); // <-- for `index.html` / views (components?)
+  app.useStaticAssets(join(__dirname, 'views')); // <-- for shared image/static assets
+  app.setBaseViewsDir(join(__dirname, 'views')); // <-- for `index.html` / views (components?)
+  // app.useStaticAssets(join(__dirname, '..', '..', 'client', 'public')); // <-- for shared image/static assets
+  app.setViewEngine('hbs');
 
   const options = new DocumentBuilder()
     .setTitle('Secret-Stories')
@@ -30,6 +35,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(3000);
+  await app.listen(PORT);
+  console.log(`Nest Server Bootstrapped and Listening on port:${PORT}`);
 }
 bootstrap();
