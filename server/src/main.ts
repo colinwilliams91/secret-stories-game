@@ -6,7 +6,8 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { join } from 'path';
 
-const PORT = 3000; /* <-- move to .env */
+const PORT = process.env.SERVER_PORT;
+const DOMAIN = process.env.INSTANCE_DOMAIN;
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -35,6 +36,6 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   await app.listen(PORT);
-  console.log(`Nest Server Bootstrapped and Listening on port:${PORT}`);
+  console.log(`Nest Server Bootstrapped and Listening on ${DOMAIN}:${PORT}`);
 }
 bootstrap();
