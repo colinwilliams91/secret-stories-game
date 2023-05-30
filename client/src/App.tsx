@@ -2,6 +2,8 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
+import { click } from "./utils/sounds";
+
 function App() {
   return (
     <div className="App">
@@ -10,6 +12,7 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <button onClick={() => click.play()}>POWER-UP!</button>
       </header>
     </div>
   );
