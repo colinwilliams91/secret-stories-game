@@ -23,9 +23,9 @@ export class UsersService {
     return user;
   }
 
-  create(createCoffeeDto: CreateUserDto) {
-    const coffee = new this.userModel(createCoffeeDto);
-    return coffee.save();
+  create(createUserDto: CreateUserDto) {
+    const user = new this.userModel(createUserDto);
+    return user.save();
   }
 
   async update(name: string, updateUserDto: UpdateUserDto) {
