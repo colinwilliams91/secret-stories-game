@@ -22,7 +22,9 @@ $ npm run build
 
 this order will distribute the CRA build to the correct directory on the backend and hbs will attach to the created `index.html`
 
-# _NoSQL_ Database:
+# Database:
+
+## _NoSQL_
 
 ## _Mongo_
 
@@ -48,3 +50,7 @@ $ mongosh
 - `show dbs`: <-- shows all dbs available
 - `use [database]`: <-- connect to db
 - `show collections`: <-- show db collections
+
+### _Entities_
+
+The respective `entities` directories acts as the schema/document/model definition files
